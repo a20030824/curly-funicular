@@ -1,5 +1,9 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.3.0/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -37,6 +41,12 @@
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
+    <a-assets>
+      <a-asset-item
+         id="animated-asset"
+         src="assets/cube.glb"
+      ></a-asset-item>
+    </a-assets>
     <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
     <a-nft
       type="nft"
@@ -46,6 +56,14 @@
       smoothTolerance=".01"
       smoothThreshold="5"
     >
+      <a-entity
+        id="bowser-model"
+        scale="1 1 1"
+        animation-mixer="loop: repeat"
+        gltf-model="#animated-asset"
+        class="clickable"  
+      >  
+      </a-entity>
       <a-entity
         gltf-model="assets/cube.gltf"
         scale="5 5 5"
